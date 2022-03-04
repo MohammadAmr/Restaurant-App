@@ -10,6 +10,10 @@
 		F70977C327CA8A4E00453661 /* CategoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70977C227CA8A4E00453661 /* CategoryPresenterTests.swift */; };
 		F70977C527CA8A8800453661 /* CategoryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70977C427CA8A8800453661 /* CategoryViewControllerTests.swift */; };
 		F75AA64D27D24A5900901CD8 /* food.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F75AA64C27D24A5900901CD8 /* food.jpg */; };
+		F764E7B527D2699C0032241A /* MockCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F764E7B427D2699C0032241A /* MockCategoryView.swift */; };
+		F764E7B927D26A640032241A /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = F764E7B727D26A640032241A /* Error.json */; };
+		F764E7BA27D26A640032241A /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = F764E7B827D26A640032241A /* Categories.json */; };
+		F764E7BD27D26DBC0032241A /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F764E7BC27D26DBC0032241A /* MockNetworkManager.swift */; };
 		F7ACE7F827C8C5AB00F4DC8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ACE7F727C8C5AB00F4DC8D /* AppDelegate.swift */; };
 		F7ACE7FA27C8C5AB00F4DC8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ACE7F927C8C5AB00F4DC8D /* SceneDelegate.swift */; };
 		F7ACE7FC27C8C5AB00F4DC8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ACE7FB27C8C5AB00F4DC8D /* ViewController.swift */; };
@@ -49,6 +53,10 @@
 		F70977C227CA8A4E00453661 /* CategoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenterTests.swift; sourceTree = "<group>"; };
 		F70977C427CA8A8800453661 /* CategoryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewControllerTests.swift; sourceTree = "<group>"; };
 		F75AA64C27D24A5900901CD8 /* food.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food.jpg; sourceTree = "<group>"; };
+		F764E7B427D2699C0032241A /* MockCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryView.swift; sourceTree = "<group>"; };
+		F764E7B727D26A640032241A /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
+		F764E7B827D26A640032241A /* Categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
+		F764E7BC27D26DBC0032241A /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		F7ACE7F427C8C5AB00F4DC8D /* OrderAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7ACE7F727C8C5AB00F4DC8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7ACE7F927C8C5AB00F4DC8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,8 +144,36 @@
 		F75AA65327D2536000901CD8 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				F764E7BB27D26A6B0032241A /* Network */,
+				F764E7B627D269AE0032241A /* JSON */,
+				F764E7B227D269720032241A /* Category */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		F764E7B227D269720032241A /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F764E7B427D2699C0032241A /* MockCategoryView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		F764E7B627D269AE0032241A /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				F764E7B827D26A640032241A /* Categories.json */,
+				F764E7B727D26A640032241A /* Error.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		F764E7BB27D26A6B0032241A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F764E7BC27D26DBC0032241A /* MockNetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F7ACE7EB27C8C5AB00F4DC8D = {
@@ -145,7 +181,6 @@
 			children = (
 				F7ACE7F627C8C5AB00F4DC8D /* OrderAPP */,
 				F7ACE81027C8C5AD00F4DC8D /* OrderAPPTests */,
-				F7ACE81327C8C5AD00F4DC8D /* Info.plist */,
 				F7ACE7F527C8C5AB00F4DC8D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -170,9 +205,9 @@
 				F7ACE7FD27C8C5AB00F4DC8D /* Main.storyboard */,
 				F7ACE80327C8C5AD00F4DC8D /* Assets.xcassets */,
 				F7ACE80527C8C5AD00F4DC8D /* LaunchScreen.storyboard */,
+				F7ACE81C27C8CD4400F4DC8D /* Models */,
 				F7ACE80827C8C5AD00F4DC8D /* Info.plist */,
 				F7ACE80027C8C5AB00F4DC8D /* OrderAPP.xcdatamodeld */,
-				F7ACE81C27C8CD4400F4DC8D /* Models */,
 			);
 			path = OrderAPP;
 			sourceTree = "<group>";
@@ -180,6 +215,7 @@
 		F7ACE81027C8C5AD00F4DC8D /* OrderAPPTests */ = {
 			isa = PBXGroup;
 			children = (
+				F7ACE81327C8C5AD00F4DC8D /* Info.plist */,
 				F75AA65127D2530300901CD8 /* ConfigureOrder */,
 				F75AA65027D252FE00901CD8 /* Order */,
 				F75AA64F27D252F400901CD8 /* MenuItemsDetails */,
@@ -368,6 +404,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F764E7B927D26A640032241A /* Error.json in Resources */,
+				F764E7BA27D26A640032241A /* Categories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +444,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F70977C527CA8A8800453661 /* CategoryViewControllerTests.swift in Sources */,
+				F764E7B527D2699C0032241A /* MockCategoryView.swift in Sources */,
+				F764E7BD27D26DBC0032241A /* MockNetworkManager.swift in Sources */,
 				F70977C327CA8A4E00453661 /* CategoryPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,7 +607,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.OrderAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -584,7 +624,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.OrderAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -593,6 +633,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = OrderAPPTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -614,6 +655,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = OrderAPPTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;

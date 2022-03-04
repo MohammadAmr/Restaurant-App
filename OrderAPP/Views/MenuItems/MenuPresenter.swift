@@ -36,16 +36,16 @@ extension MenuPresenter : MenuPresenterProtocol
     
     func fetchMenuItems() {
         
-        networkManager.fetchMenuItems(forCategory: category) { (result) in
+        networkManager.fetchMenuItems(forCategory: category) { [weak self](result:Result<MenuResponse, Error>) in
             switch result {
             case .success(let menuItems):
                 DispatchQueue.main.async {
-                    self.menuItems = menuItems
-                    self.view?.reloadTable()
+                    self?.menuItems = menuItems.items
+                    self?.view?.reloadTable()
             }
             case .failure(let error):
                 print(error)
-                self.view?.displayError(error,
+                self?.view?.displayError(error,
                 title: "Failed to Fetch Categories")
             }
         }

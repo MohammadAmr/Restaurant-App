@@ -23,7 +23,6 @@ class CategoryPresenter{
         self.view = view
         self.networkManager = networkManager
         fetchCategoryData()
-        print(categories.count)
     }
 }
 
@@ -39,16 +38,17 @@ extension CategoryPresenter : CategoryPresenterProtocol
     
     func fetchCategoryData() {
         
-        networkManager.fetchCategories { (result) in
+        networkManager.fetchCategories { [weak self] (result:Result<CategoriesResponse, Error>) in
             switch result {
             case .success(let categories):
                 DispatchQueue.main.async {
-                    self.categories = categories
-                    self.view?.reloadTable()
+                    print(categories.categories.count)
+                    self?.categories = categories.categories
+                    self?.view?.reloadTable()
                 }
             case .failure(let error):
                 print(error)
-                self.view?.displayError(error,
+                self?.view?.displayError(error,
                 title: "Failed to Fetch Categories")
             }
         }
