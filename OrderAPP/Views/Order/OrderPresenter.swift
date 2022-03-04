@@ -19,9 +19,12 @@ class OrderPresenter
 {
     weak var view : OrderViewProtocol?
     var totalMinutes : Int = 0
-    init(view: OrderViewProtocol)
+    var networkManager : networkService
+    
+    init(_ networkManager: networkService = MenuController.shared ,view: OrderViewProtocol)
     {
         self.view = view
+        self.networkManager = networkManager
         uploadOrder()
     }
 }
@@ -50,7 +53,7 @@ extension OrderPresenter : OrderPresenterProtocol
     }
     func uploadOrder() {
         let menuIds = MenuController.shared.order.menuItems.map{ $0.id }
-        MenuController.shared.submitOrder(forMenuIDs: menuIds)
+        networkManager.submitOrder(forMenuIDs: menuIds)
            { (result) in
             switch result {
             case .success(let minutesToPrepare):

@@ -19,11 +19,13 @@ class MenuPresenter
     weak var view : MenuViewProtocol?
     var menuItems = [MenuItem]()
     let category : String
+    var networkManager : networkService
     
     
-    init(category: String)
+    init(_ networkManager: networkService = MenuController.shared, category: String)
     {
         self.category = category
+        self.networkManager = networkManager
         fetchMenuItems()
     }
 }
@@ -34,13 +36,13 @@ extension MenuPresenter : MenuPresenterProtocol
     
     func fetchMenuItems() {
         
-        MenuController.shared.fetchMenuItems(forCategory: category) { (result) in
+        networkManager.fetchMenuItems(forCategory: category) { (result) in
             switch result {
             case .success(let menuItems):
                 DispatchQueue.main.async {
                     self.menuItems = menuItems
                     self.view?.reloadTable()
-                }
+            }
             case .failure(let error):
                 print(error)
                 self.view?.displayError(error,

@@ -17,17 +17,14 @@ class CategoryPresenter{
     
     weak var view : CategoryViewProtocol?
     var categories = [String]()
+    var networkManager : networkService
     
-    init(view:CategoryViewProtocol) {
+    init(_ networkManager : networkService = MenuController.shared, view:CategoryViewProtocol) {
         self.view = view
+        self.networkManager = networkManager
         fetchCategoryData()
         print(categories.count)
     }
-    
-    
-    
-    
-    
 }
 
 extension CategoryPresenter : CategoryPresenterProtocol
@@ -42,7 +39,7 @@ extension CategoryPresenter : CategoryPresenterProtocol
     
     func fetchCategoryData() {
         
-        MenuController.shared.fetchCategories { (result) in
+        networkManager.fetchCategories { (result) in
             switch result {
             case .success(let categories):
                 DispatchQueue.main.async {

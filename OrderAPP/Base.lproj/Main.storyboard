@@ -185,7 +185,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="cart.fill.badge.plus" catalog="system" id="KJj-r6-lx5">
                             <connections>
                                 <action selector="SubmitBtndidPressed:" destination="cWT-CX-xPU" id="vTF-Xl-dJj"/>
-                                <segue destination="F1Y-tm-CVh" kind="show" destinationCreationSelector="confirmOrder:" id="RfH-n8-IAi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -270,6 +269,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AtI-wI-fTm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FXK-zR-kwG">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

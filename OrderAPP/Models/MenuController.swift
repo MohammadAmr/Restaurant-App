@@ -8,11 +8,16 @@
 
 import Foundation
 import UIKit
-class MenuController{
+
+protocol networkService {
+    func fetchCategories(completion: @escaping (Result<[String], Error>) -> Void)
+    func fetchMenuItems(forCategory categoryName: String, completion: @escaping (Result<[MenuItem], Error>) -> Void)
+    func submitOrder(forMenuIDs menuIDs: [Int], completion: @escaping (Result<Int, Error>) -> Void)
+}
+class MenuController : networkService{
     
     let baseURL = URL(string: "http://localhost:8080/")!
-    static let orderUpdatedNotification =
-       Notification.Name("MenuController.orderUpdated")
+    static let orderUpdatedNotification = Notification.Name("MenuController.orderUpdated")
     var order = Order(){
         didSet {
                 NotificationCenter.default.post(name:
@@ -94,19 +99,6 @@ class MenuController{
                 }
             } else if let error = error {
                 completion(.failure(error))
-            }
-        }
-        task.resume()
-    }
-    static func fetchImage(url: URL, completion: @escaping (UIImage?)
-       -> Void) {
-        let task = URLSession.shared.dataTask(with: url)
-           { (data, response, error) in
-            if let data = data,
-                let image = UIImage(data: data) {
-                completion(image)
-            } else {
-                completion(nil)
             }
         }
         task.resume()

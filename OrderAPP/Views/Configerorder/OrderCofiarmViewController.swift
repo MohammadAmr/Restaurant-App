@@ -8,9 +8,10 @@
 
 import UIKit
 protocol OrderCofiarmViewProtocol {
+    func setPresenter(presenter: OrderConfirmationPresenterProtocol)
     
 }
-class OrderCofiarmViewController: UIViewController, OrderCofiarmViewProtocol {
+class OrderCofiarmViewController: UIViewController {
     @IBOutlet weak var totalMinutes: UILabel!
     var presenter : OrderConfirmationPresenterProtocol?
     override func viewDidLoad() {
@@ -18,15 +19,7 @@ class OrderCofiarmViewController: UIViewController, OrderCofiarmViewProtocol {
         totalMinutes.text = "\(self.presenter?.getTotalMinutes() ?? 0)"
         // Do any additional setup after loading the view.
     }
-    init?(coder : NSCoder, presenter: OrderConfirmationPresenterProtocol) {
-        super.init(coder: coder)
-        self.presenter = presenter
-          self.presenter?.setView(view: self)
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     /*
     // MARK: - Navigation
@@ -38,4 +31,11 @@ class OrderCofiarmViewController: UIViewController, OrderCofiarmViewProtocol {
     }
     */
 
+}
+extension OrderCofiarmViewController : OrderCofiarmViewProtocol
+{
+    func setPresenter(presenter: OrderConfirmationPresenterProtocol)
+    {
+        self.presenter = presenter
+    }
 }

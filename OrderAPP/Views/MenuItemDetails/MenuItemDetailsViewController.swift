@@ -60,6 +60,7 @@ class MenuItemDetailsViewController: UIViewController, MenuItemDetailsViewProtoc
         itemName.text   = self.presenter?.getName()
         itemPrice.text  = MenuItem.priceFormatter.string(from: NSNumber(value: self.presenter?.getPrice() ?? 0))
         itemDetail.text = self.presenter?.getDescription()
+        itemImage.image = UIImage(named: "food.jpg")
         //let menuItem = self.presenter?.getMenuItem()
         /*MenuController.fetchImage(url: menuItem?.imageURL
                { (image) in

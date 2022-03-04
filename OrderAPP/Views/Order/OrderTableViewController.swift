@@ -54,6 +54,7 @@ class OrderTableViewController: UITableViewController{
     func configure(_ cell: UITableViewCell, forItemAt indexPath:
        IndexPath) {
         let menuItem = self.presenter?.getOrderItemAt(index: indexPath.row)
+        cell.imageView?.image = UIImage(named: "food.jpg")
         cell.textLabel?.text = menuItem?.name
         cell.detailTextLabel?.text =
             MenuItem.priceFormatter.string(from: NSNumber(value:
@@ -100,24 +101,32 @@ class OrderTableViewController: UITableViewController{
     */
     
     @IBAction func SubmitBtndidPressed(_ sender: Any) {
-        func submitTapped(_ sender: Any) {
             let orderTotal =
                MenuController.shared.order.menuItems.reduce(0.0)
                { (result, menuItem) -> Double in
                 return result + menuItem.price
             }
-            let formattedTotal = MenuItem.priceFormatter.string(from:
-               NSNumber(value: orderTotal)) ?? "\(orderTotal)"
-            let alertController = UIAlertController(title:"Confirm Order", message: "You are about to submit your order with a total of \(self.presenter?.getTotalPrice())",
-               preferredStyle: .actionSheet)
-            alertController.addAction(UIAlertAction(title: "Submit",
-               style: .default, handler: { _ in
-                self.presenter?.uploadOrder()
-            }))
-            alertController.addAction(UIAlertAction(title: "Cancel",
-               style: .cancel, handler: nil))
-            present(alertController, animated: true, completion: nil)
-        }
+        
+        let orderConfirmVC = self.storyboard?.instantiateViewController(identifier: "OrderCofiarmViewController") as! OrderCofiarmViewController
+        
+        let tmpPresenter : OrderConfirmationPresenterProtocol = OrderConfirmationPresenter(totalMinutes: self.presenter?.getTotalMinutes() ?? 0)
+        
+        orderConfirmVC.setPresenter(presenter: tmpPresenter)
+        tmpPresenter.setView(view: orderConfirmVC)
+        
+        _ = MenuItem.priceFormatter.string(from: NSNumber(value: orderTotal)) ?? "\(orderTotal)"
+        
+        
+        let alertController = UIAlertController(title:"Confirm Order", message: "You are about to submit your order with a total of \(orderTotal)",
+           preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Submit",
+           style: .default, handler: { _ in
+            //self.presenter?.uploadOrder()
+            self.navigationController?.pushViewController(orderConfirmVC, animated: true)
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel",
+           style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     func displayError(_ error: Error, title: String) {
@@ -128,12 +137,6 @@ class OrderTableViewController: UITableViewController{
                style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-    }
-    
-    @IBSegueAction func confirmOrder(_ coder: NSCoder) -> OrderCofiarmViewController? {
-        let presenter = OrderConfirmationPresenter(totalMinutes: self.presenter?.getTotalMinutes() ?? 0)
-        return OrderCofiarmViewController(coder: coder,
-           presenter: presenter)
     }
     
 }

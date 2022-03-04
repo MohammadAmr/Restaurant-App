@@ -61,6 +61,7 @@ class MenuTableViewController: UITableViewController {
        IndexPath) {
         let menuItem = self.presenter?.getMenuItemAt(index: indexPath.row)
         cell.textLabel?.text = menuItem?.name
+        cell.imageView?.image = UIImage(named: "food.jpg")
         cell.detailTextLabel?.text = MenuItem.priceFormatter.string(from: NSNumber(value: menuItem?.price ?? 0))
     }
     
