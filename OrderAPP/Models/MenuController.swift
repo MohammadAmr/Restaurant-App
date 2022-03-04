@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 protocol networkService {
-    func fetchCategories(completion: @escaping (Result<[String], Error>) -> Void)
-    func fetchMenuItems(forCategory categoryName: String, completion: @escaping (Result<[MenuItem], Error>) -> Void)
+    func fetchCategories<T : Decodable>(completion: @escaping (Result<T, Error>) -> Void)
+    func fetchMenuItems<T: Decodable>(forCategory categoryName: String, completion: @escaping (Result<T, Error>) -> Void)
     func submitOrder(forMenuIDs menuIDs: [Int], completion: @escaping (Result<Int, Error>) -> Void)
 }
+
+
 class MenuController : networkService{
     
     let baseURL = URL(string: "http://localhost:8080/")!
@@ -29,7 +31,7 @@ class MenuController : networkService{
     {
         
     }
-    func fetchCategories(completion: @escaping (Result<[String], Error>) -> Void) {
+    func fetchCategories<T>(completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
         let categoriesURL = baseURL.appendingPathComponent("categories")
         let task = URLSession.shared.dataTask(with: categoriesURL)
         {
@@ -38,8 +40,8 @@ class MenuController : networkService{
                 do{
                     let jsonDecoder = JSONDecoder()
                     let categoriesResponse = try
-                        jsonDecoder.decode(CategoriesResponse.self, from: data)
-                    completion(.success(categoriesResponse.categories))
+                        jsonDecoder.decode(T.self, from: data)
+                    completion(.success(categoriesResponse))
                 } catch {
                     completion(.failure(error))
                 }
@@ -49,7 +51,7 @@ class MenuController : networkService{
         }
         task.resume()
     }
-    func fetchMenuItems(forCategory categoryName: String, completion: @escaping (Result<[MenuItem], Error>) -> Void)
+    func fetchMenuItems<T>(forCategory categoryName: String, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable
     {
         let baseMenuURL = baseURL.appendingPathComponent("menu")
         var components = URLComponents(url: baseMenuURL, resolvingAgainstBaseURL: true)!
@@ -62,9 +64,8 @@ class MenuController : networkService{
                 if let data = data {
                     do{
                         let jsonDecoder = JSONDecoder()
-                        let menuResponse = try
-                            jsonDecoder.decode(MenuResponse.self, from: data)
-                        completion(.success(menuResponse.items))
+                        let menuResponse = try jsonDecoder.decode(T.self, from: data)
+                        completion(.success(menuResponse))
                     } catch {
                         completion(.failure(error))
                     }
