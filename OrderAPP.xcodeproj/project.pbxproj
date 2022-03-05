@@ -11,6 +11,11 @@
 		F70977C327CA8A4E00453661 /* CategoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70977C227CA8A4E00453661 /* CategoryPresenterTests.swift */; };
 		F70977C527CA8A8800453661 /* CategoryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70977C427CA8A8800453661 /* CategoryViewControllerTests.swift */; };
 		F75AA64D27D24A5900901CD8 /* food.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F75AA64C27D24A5900901CD8 /* food.jpg */; };
+		F75FFCD127D41536002E2669 /* MenuItemDetailsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75FFCD027D41536002E2669 /* MenuItemDetailsPresenterTests.swift */; };
+		F75FFCD427D41586002E2669 /* MockItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75FFCD327D41586002E2669 /* MockItemDetailsView.swift */; };
+		F75FFCD727D415E5002E2669 /* MockOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75FFCD627D415E5002E2669 /* MockOrderPresenter.swift */; };
+		F75FFCD927D415EF002E2669 /* MockOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75FFCD827D415EF002E2669 /* MockOrderView.swift */; };
+		F75FFCDB27D41635002E2669 /* OrderPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75FFCDA27D41635002E2669 /* OrderPresenterTests.swift */; };
 		F764E7B527D2699C0032241A /* MockCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F764E7B427D2699C0032241A /* MockCategoryView.swift */; };
 		F764E7B927D26A640032241A /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = F764E7B727D26A640032241A /* Error.json */; };
 		F764E7BA27D26A640032241A /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = F764E7B827D26A640032241A /* Categories.json */; };
@@ -55,6 +60,11 @@
 		F70977C227CA8A4E00453661 /* CategoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenterTests.swift; sourceTree = "<group>"; };
 		F70977C427CA8A8800453661 /* CategoryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewControllerTests.swift; sourceTree = "<group>"; };
 		F75AA64C27D24A5900901CD8 /* food.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food.jpg; sourceTree = "<group>"; };
+		F75FFCD027D41536002E2669 /* MenuItemDetailsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuItemDetailsPresenterTests.swift; path = OrderAPPTests/MenuItemsDetails/MenuItemDetailsPresenterTests.swift; sourceTree = SOURCE_ROOT; };
+		F75FFCD327D41586002E2669 /* MockItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockItemDetailsView.swift; sourceTree = "<group>"; };
+		F75FFCD627D415E5002E2669 /* MockOrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrderPresenter.swift; sourceTree = "<group>"; };
+		F75FFCD827D415EF002E2669 /* MockOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrderView.swift; sourceTree = "<group>"; };
+		F75FFCDA27D41635002E2669 /* OrderPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderPresenterTests.swift; path = OrderAPPTests/OrderPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		F764E7B427D2699C0032241A /* MockCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryView.swift; sourceTree = "<group>"; };
 		F764E7B727D26A640032241A /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
 		F764E7B827D26A640032241A /* Categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
@@ -125,6 +135,7 @@
 		F75AA64F27D252F400901CD8 /* MenuItemsDetails */ = {
 			isa = PBXGroup;
 			children = (
+				F75FFCD027D41536002E2669 /* MenuItemDetailsPresenterTests.swift */,
 			);
 			path = MenuItemsDetails;
 			sourceTree = "<group>";
@@ -132,6 +143,7 @@
 		F75AA65027D252FE00901CD8 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				F75FFCDA27D41635002E2669 /* OrderPresenterTests.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -146,11 +158,30 @@
 		F75AA65327D2536000901CD8 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				F75FFCD527D415D9002E2669 /* Order */,
+				F75FFCD227D41569002E2669 /* MenuItemDetails */,
 				F764E7BB27D26A6B0032241A /* Network */,
 				F764E7B627D269AE0032241A /* JSON */,
 				F764E7B227D269720032241A /* Category */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		F75FFCD227D41569002E2669 /* MenuItemDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F75FFCD327D41586002E2669 /* MockItemDetailsView.swift */,
+			);
+			path = MenuItemDetails;
+			sourceTree = "<group>";
+		};
+		F75FFCD527D415D9002E2669 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				F75FFCD627D415E5002E2669 /* MockOrderPresenter.swift */,
+				F75FFCD827D415EF002E2669 /* MockOrderView.swift */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 		F764E7B227D269720032241A /* Category */ = {
@@ -447,10 +478,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F70977C527CA8A8800453661 /* CategoryViewControllerTests.swift in Sources */,
+				F75FFCD727D415E5002E2669 /* MockOrderPresenter.swift in Sources */,
 				F764E7B527D2699C0032241A /* MockCategoryView.swift in Sources */,
 				F764E7BD27D26DBC0032241A /* MockNetworkManager.swift in Sources */,
 				F70977C327CA8A4E00453661 /* CategoryPresenterTests.swift in Sources */,
 				7642ABC427D2E204002252D4 /* MockCategoryPresenter.swift in Sources */,
+				F75FFCD127D41536002E2669 /* MenuItemDetailsPresenterTests.swift in Sources */,
+				F75FFCDB27D41635002E2669 /* OrderPresenterTests.swift in Sources */,
+				F75FFCD427D41586002E2669 /* MockItemDetailsView.swift in Sources */,
+				F75FFCD927D415EF002E2669 /* MockOrderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
