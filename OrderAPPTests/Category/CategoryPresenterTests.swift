@@ -9,7 +9,7 @@ class CategoryPresenterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         categoryView = MockCategoryView()
-        sut = CategoryPresenter(MockNetworkManager(fileName: "Categories"), view: categoryView)
+        sut = CategoryPresenter(networkManager: MockNetworkManager(fileName: "Categories"), view: categoryView)
     }
     
     override func tearDown() {
@@ -26,17 +26,14 @@ class CategoryPresenterTests: XCTestCase {
     }
     
     func testSut_whenGetCategoriesCalled_categoriesAreFilled() {
-                
+       
         // When
-        print(sut.categories.count)
         sut.fetchCategoryData()
-        print(sut.categories.count)
         // Then
         XCTAssertNotEqual(sut.categories, [])
     }
     
     func testSut_whengetCategoryAtIndexCalled_correctCategoryIsReturned() {
-        
         // Given
         sut.fetchCategoryData()
         
@@ -62,7 +59,7 @@ class CategoryPresenterTests: XCTestCase {
     
     func testSut_whenGetCategoriesCalledWithFailure_categoriesStillEmpty() {
         // Given
-        sut = CategoryPresenter(MockNetworkManager(fileName: "Error"), view: categoryView)
+        sut = CategoryPresenter(networkManager: MockNetworkManager(fileName: "Error"), view: categoryView)
         
         // Then
         sut.fetchCategoryData()

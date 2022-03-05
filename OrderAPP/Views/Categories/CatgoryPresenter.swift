@@ -19,7 +19,7 @@ class CategoryPresenter{
     var categories = [String]()
     var networkManager : networkService
     
-    init(_ networkManager : networkService = MenuController.shared, view:CategoryViewProtocol) {
+    init(networkManager : networkService = MenuController.shared, view:CategoryViewProtocol) {
         self.view = view
         self.networkManager = networkManager
         fetchCategoryData()
@@ -41,9 +41,10 @@ extension CategoryPresenter : CategoryPresenterProtocol
         networkManager.fetchCategories { [weak self] (result:Result<CategoriesResponse, Error>) in
             switch result {
             case .success(let categories):
+                
+                print(categories.categories.count)
+                self?.categories = categories.categories
                 DispatchQueue.main.async {
-                    print(categories.categories.count)
-                    self?.categories = categories.categories
                     self?.view?.reloadTable()
                 }
             case .failure(let error):

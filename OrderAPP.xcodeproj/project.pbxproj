@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7642ABC427D2E204002252D4 /* MockCategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642ABC327D2E204002252D4 /* MockCategoryPresenter.swift */; };
 		F70977C327CA8A4E00453661 /* CategoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70977C227CA8A4E00453661 /* CategoryPresenterTests.swift */; };
 		F70977C527CA8A8800453661 /* CategoryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70977C427CA8A8800453661 /* CategoryViewControllerTests.swift */; };
 		F75AA64D27D24A5900901CD8 /* food.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F75AA64C27D24A5900901CD8 /* food.jpg */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7642ABC327D2E204002252D4 /* MockCategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryPresenter.swift; sourceTree = "<group>"; };
 		F70977C227CA8A4E00453661 /* CategoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenterTests.swift; sourceTree = "<group>"; };
 		F70977C427CA8A8800453661 /* CategoryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewControllerTests.swift; sourceTree = "<group>"; };
 		F75AA64C27D24A5900901CD8 /* food.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food.jpg; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				F764E7B427D2699C0032241A /* MockCategoryView.swift */,
+				7642ABC327D2E204002252D4 /* MockCategoryPresenter.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				F764E7B527D2699C0032241A /* MockCategoryView.swift in Sources */,
 				F764E7BD27D26DBC0032241A /* MockNetworkManager.swift in Sources */,
 				F70977C327CA8A4E00453661 /* CategoryPresenterTests.swift in Sources */,
+				7642ABC427D2E204002252D4 /* MockCategoryPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -584,7 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -635,8 +639,8 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = OrderAPPTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				INFOPLIST_FILE = OrderAPP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -657,8 +661,8 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = OrderAPPTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				INFOPLIST_FILE = OrderAPP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
